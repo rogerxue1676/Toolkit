@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include "plt_deque.h"
 
+#define SUCCESS (0)
+#define FAILURE (1)
+
 static deque_node_t *deque_node(deque_t *deque, unsigned int index)
 {
     unsigned int i = 0;
@@ -120,7 +123,7 @@ int deque_push_front(deque_t *deque, void *data)
 
 void *deque_pop_front(deque_t *deque)
 {
-    void *data = NULL
+    void *data = NULL;
     if(deque && deque->count)
     {
         pthread_mutex_lock(&deque->mutex);
@@ -156,7 +159,7 @@ int deque_push_back(deque_t *deque, void *data)
 
 void *deque_pop_back(deque_t *deque)
 {
-    void *data = NULL
+    void *data = NULL;
 
     if(deque && deque->count)
     {
@@ -314,7 +317,7 @@ int deque_destory(deque_t *deque)
 
     if(deque)
     {
-        pthread_mutex_lock(&deque->mutex)
+        pthread_mutex_lock(&deque->mutex);
         while(deque->head)
         {
             node = deque->head;
